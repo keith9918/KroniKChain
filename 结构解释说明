@@ -1,0 +1,55 @@
+### `project-root/`
+- **`src/`**：存放项目的源代码，按照功能模块进行划分。
+    - **`pages/`**：页面组件，每个主要功能/视图的页面组件。
+        - **`Marketplace/`**：市场模块页面。
+            - **`Marketplace.jsx`**：展示待售产品列表及购买选项。
+            - **`ProductDetail.jsx`**：产品详细视图（描述、价格、购买按钮）。
+        - **`Traceability/`**：产品溯源模块。
+            - **`Traceability.jsx`**：溯源产品起源和历史的页面。
+        - **`Exchange/`**：货币兑换（代币互换）模块。
+            - **`Exchange.jsx`**：兑换代币的界面（选择代币、查看汇率、兑换）。
+        - **`Wallet/`**：用户钱包模块。
+            - **`Wallet.jsx`**：钱包页面（显示余额、交易记录、发送/接收功能）。
+        - **`Auth/`**：认证模块。
+            - **`Login.jsx`**：登录页面（包含表单和 Google OAuth 登录选项）。
+            - **`Register.jsx`**：注册页面（新用户的注册表单）。
+        - **`QueryChain/`**：链上数据查询模块。
+            - **`QueryChain.jsx`**：查询区块链信息的页面（例如区块、交易、地址信息）。
+        - **`NFT/`**：与 NFT 相关的页面。
+            - **`NFTGallery.jsx`**：展示 NFT 列表的页面（拥有或待售）。
+            - **`NFTDetail.jsx`**：查看特定 NFT 的详细信息及交易（购买/出售）。
+            - **`NFTMint.jsx`**：铸造新 NFT 的页面（上传数据和铸造的表单）。
+    - **`components/`**：可复用的 UI 组件（页面间共享）。
+        - **`Navbar.jsx`**：网站导航栏（logo、菜单链接、账户信息）。
+        - **`Footer.jsx`**：网站页脚。
+        - **`ProductCard.jsx`**：用于展示产品摘要的卡片组件（用于市场）。
+        - **`NFTCard.jsx`**：用于 NFT 项目预览的卡片组件（用于 NFT 画廊）。
+        - **`Loader.jsx`**：加载指示器组件。
+        - **其他通用组件**：如按钮、模态框、表单字段等。
+    - **`redux/`**：Redux 状态管理设置。
+        - **`store.js`**：初始化 Redux 存储并应用中间件（Thunk 等），Redux DevTools。
+        - **`rootReducer.js`**：合并功能 reducer（如果不使用 Redux Toolkit 的自动合并）。
+        - **`slices/`**：每个功能的 Redux Toolkit 切片定义。
+            - **`marketplaceSlice.js`**：市场状态 + reducer/动作（产品列表、选定产品）。
+            - **`traceabilitySlice.js`**：产品溯源数据状态（起源历史记录）。
+            - **`exchangeSlice.js`**：汇率、兑换交易状态的状态。
+            - **`walletSlice.js`**：用户钱包状态（余额、交易历史）。
+            - **`authSlice.js`**：认证状态（当前用户信息、令牌、登录状态）。
+            - **`chainSlice.js`**：链上查询状态（查询数据、加载状态）。
+            - **`nftSlice.js`**：NFT 状态（NFT 列表、所有权、铸造状态）。
+        - **`actions/`（可选）**：如果使用普通 Redux，动作类型/创建者可以在此组织。
+        - **`reducers/`（可选）**：如果不使用切片，传统 reducer 可以放在这里。
+    - **`api/`**：后端调用或区块链交互的 API 接口层。
+        - **`apiClient.js`**：API 客户端设置（例如 Axios 实例或带有基础 URL 的 fetch 包装器）。
+        - **`marketplaceApi.js`**：获取产品、获取产品详情、提交购买交易的函数。
+        - **`traceabilityApi.js`**：从区块链/后端检索产品溯源信息的函数。
+        - **`exchangeApi.js`**：获取代币汇率和执行代币兑换交易的函数。
+        - **`walletApi.js`**：获取钱包数据（余额、交易历史）、发送代币的函数。
+        - **`authApi.js`**：认证函数（登录、注册、处理 Google OAuth 令牌交换）。
+        - **`chainApi.js`**：查询区块链数据（区块信息、交易查询等）的函数。
+        - **`nftApi.js`**：NFT 操作的函数（获取 NFT 列表、获取 NFT 详情、铸造新 NFT）。
+    - **`App.jsx`**：根 App 组件（定义整体布局并设置页面路由）。
+    - **`routes.js`（可选）**：路由定义（如果从 App.jsx 分离以保持整洁）。
+    - **`index.js`**：应用入口点（渲染 App；用 Redux Provider 和 BrowserRouter 包裹以实现路由）。
+    - **`index.css`**：全局 CSS 文件（导入 Tailwind 基础样式和自定义覆盖）。
+    - **`tailwind.config.js`**：TailwindCSS 配置（自定义 Arkham
